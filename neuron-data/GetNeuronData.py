@@ -1,7 +1,9 @@
+# Script that creates dataset
+
 try:
-  from urllib2 import urlopen, Request
+  from urllib2 import urlopen, Request, HTTPError
 except ImportError:
-  from urllib.request import urlopen, Request
+  from urllib.request import urlopen, Request, HTTPError
 
 import re
 import json
@@ -9,7 +11,7 @@ import base64
 import os.path
 
 
-# "constants"
+# constants
 NEUROMORPHO_URL = "http://neuromorpho.org"
 NEURON_QUERY_URL = "http://neuromorpho.org/api/neuron/select?q=species:human&page={}&size={}&sort=neuron_id"
 MAX_NEURONS_PER_PAGE = 500
@@ -43,20 +45,33 @@ def get_all_neurons_of_species():
 #function based on https://github.com/NeuroBox3D/neuromorpho
 def get_swc_by_neuron_name(neuronName):
   url = "%s/neuron_info.jsp?neuron_name=%s" % (NEUROMORPHO_URL, neuronName)
-  html = urlopen(url).read()
+  try:
+    html = urlopen(url).read()
+  except HTTPError as e:
+    print e.code
+    print e.msg
   p = re.compile(r'<a href=dableFiles/(.*)>Morphology File \(Standardized\)</a>', re.MULTILINE)
   m = re.findall(p, html)
   swc_file_names = []
   for match in m:
-     fileName = "./swc/"+match.replace("%20", " ").split("/")[-1]
-     swc_file_names.append(fileName)
-     print(urlopen("%s/dableFiles/%s" % (NEUROMORPHO_URL, match)).getcode())
-    #  response = urlopen("%s/dableFiles/%s" % (NEUROMORPHO_URL, match)).getcode()
-
-    #  open(fileName, 'w').write(response.read())
+    fileName = "./swc/"+match.replace("%20", " ").split("/")[-1]
+    swc_file_names.append(fileName)
+    try:
+      # print(urlopen("%s/dableFiles/%s" % (NEUROMORPHO_URL, match)).getcode())
+      response = urlopen("%s/dableFiles/%s" % (NEUROMORPHO_URL, match))
+      try:
+        open(fileName, 'w').write(response.read())
+      except AttributeError as e:
+        print e
+        print response
+      except Exception as exception:
+        print exception
+    except HTTPError as e:
+      print e.code
+      print e.msg
   return swc_file_names
 
-
+# Gets .swc file for each neuron and also gets additional measurement # metadata
 def get_complete_neuron_data(neuron_data):
     for n in neuron_data:
 

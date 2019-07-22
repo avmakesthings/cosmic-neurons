@@ -1,87 +1,63 @@
-# Cosmic Neurons (?? TBD)
+# Cosmic Neurons (?? TBD :P )
 
-Working directory for aggregating data got neuron / cosmic web ML model
+Working directory for aggregating neuron data / developing cosmic web & neuron ML model
 
-<!-- ## Getting Started
+## Description
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+The scripts in the neuron-data folder of the repo are mainly for reference or in case someone needs to fetch more data from http://neuromorpho.org/. Feel free to make additional folders for other parts of the project.
 
-### Prerequisites
+NOTE: The neuron data files (.swc) are not located in this repo.  A zip of all 4041 human neurons can be downloaded at this link: https://drive.google.com/file/d/17n0hL-ECJ_JJNJu30__qOU8FDEC-DbSu/view?usp=sharing
 
-pip install virtualenv
+.swc filenames = the name of the neuron
 
-```
-Give examples
-```
+The metadata is located in this repo in the file neuron_metadata.json
 
-### Installing
-
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
+### .swc file format
+The description below is sourced from this FAQ : http://neuromorpho.org/myfaq.jsp
 
 ```
-Give the example
+Q:	What is SWC format?
+A: 	The three dimensional structure of a neuron can be represented in a SWC format (Cannon et al., 1998). 
+SWC is a simple Standardized format. Each line has 7 fields encoding data for a single neuronal compartment:
+
+  * an integer number as compartment identifier
+  * type of neuronal compartment
+       0 - undefined
+       1 - soma
+       2 - axon
+       3 - basal dendrite
+       4 - apical dendrite
+  * x coordinate of the compartment
+  * y coordinate of the compartment
+  * z coordinate of the compartment
+  * radius of the compartment
+  * parent compartment
+
+Every compartment has only one parent and the parent compartment for the first point in each file is 
+always -1 (if the file does not include the soma information then the originating point of the tree will 
+be connected to a parent of -1). The index for parent compartments are always less than child compartments. 
+Loops and unconnected branches are excluded. All trees should originate from the soma and have parent 
+type 1 if the file includes soma information. Soma can be a single point or more than one point. When the 
+soma is encoded as one line in the SWC, it is interpreted as a "sphere". When it is encoded by more than 1 line, 
+it could be a set of tapering cylinders (as in some pyramidal cells) or even a 2D projected contour ("circumference").
 ```
 
-And repeat
+## Deployment 
 
-```
-until finished
-```
+Recommended to run in a virtualenv.   Pip install if you don't have it ;) 
 
-End with an example of getting some data out of the system or using it for a little demo
 
-## Running the tests
+## Contributors
 
-Explain how to run the automated tests for this system
+* **Anastasia Victor** - *Initial work* - [Link](https://github.com/avmakesthings)
+* **Mark Neyrick**
+* **Michael Silver**
+* **Miguel Angel Aragon Calvo**
+* **Trevor Owens**
 
-### Break down into end to end tests
 
-Explain what these tests test and why
+## Usful Links
 
-```
-Give an example
-```
+* http://neuromorpho.org/ - Open source neuron data
+* https://github.com/mcellteam/swc_mesher - Blender add-on for .swc files
 
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
-
-## Built With
-
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
-
-## Authors
-
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc -->

@@ -126,4 +126,5 @@ dmypy.json
 
 #SWC files
 neuron-data/swc
-.swc
+*.swc
+*.zip
