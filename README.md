@@ -2,11 +2,13 @@
 
 Working directory for aggregating neuron data / developing cosmic web & neuron ML model
 
+![alt text](https://github.com/avmakesthings/cosmic-neurons/neuron-data/H16-03-005-01-04-03_697383950_m.jpg)
+
 ## Description
 
 The scripts in the neuron-data folder of the repo are mainly for reference or in case someone needs to fetch more data from http://neuromorpho.org/. Feel free to make additional folders for other parts of the project.
 
-NOTE: The neuron data files (.swc) are not located in this repo.  A zip of all 4041 human neurons can be downloaded at this link: https://drive.google.com/file/d/17n0hL-ECJ_JJNJu30__qOU8FDEC-DbSu/view?usp=sharing
+NOTE: The neuron data files (.swc) are not located in this repo.  A zip of all 4041 human neurons can be downloaded at this link: https://drive.google.com/file/d/17n0hL-ECJ_JJNJu30__qOU8FDEC-DbSu/view?usp=sharing . There are a few .swc files missing from the dataset, due to 404 errors. 
 
 .swc filenames = the name of the neuron
 
