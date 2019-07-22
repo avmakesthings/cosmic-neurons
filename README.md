@@ -2,7 +2,7 @@
 
 Working directory for aggregating neuron data / developing cosmic web & neuron ML model
 
-![alt text](https://github.com/avmakesthings/cosmic-neurons/neuron-data/H16-03-005-01-04-03_697383950_m.jpg)
+![neuron image](neuron-data/H16-03-005-01-04-03_697383950_m.jpg)
 
 ## Description
 
