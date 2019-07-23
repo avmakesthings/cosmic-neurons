@@ -51,7 +51,7 @@ Recommended to run in a virtualenv.   Pip install if you don't have it ;)
 
 ## Contributors
 
-* **Anastasia Victor** - *Initial work* - [Link](https://github.com/avmakesthings)
+* **Anastasia Victor** - [Github](https://github.com/avmakesthings)
 * **Mark Neyrinck**
 * **Michael Silver**
 * **Miguel Angel Aragon Calvo**
